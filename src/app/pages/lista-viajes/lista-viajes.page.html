@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Viajes Disponibles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background: linear-gradient(to bottom, #3A6073, #16222A); color: white; padding: 10px;">
+
+
+  <!-- Lista de Viajes -->
+  <ion-grid style="padding: 0;">
+    <ion-row>
+      <ion-col size-md="6" size-sm="12" *ngFor="let viaje of viajes" style="display: flex; justify-content: center; margin-bottom: 15px;">
+        <ion-card style="width: 100%; border-radius: 20px; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); background: #3A6073; color: white; padding: 10px;">
+          <ion-card-header style="background: #2C5364; color: white; border-radius: 20px 20px 0 0; padding: 20px 15px;">
+            <ion-card-title style="font-size: 1.6em; font-weight: bold; text-align: center;">
+              {{ viaje?.destino }}
+            </ion-card-title>
+            <ion-card-subtitle style="font-size: 1.1em; text-align: center;">  
+            </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content style="padding: 15px 20px;">
+            <div style="margin-bottom: 12px;">
+              <p><strong>Salida:</strong> {{ viaje?.horaSalida | date: 'dd/MM/yyyy, hh:mm a' }}</p>
+              <p><strong>Asientos disponibles:</strong> {{viaje?.asientos}}</p>
+            </div>
+
+            <!-- Costo -->
+            <ion-item lines="none" style="background: #2C5364; border-radius: 8px; margin-bottom: 15px;">
+              <ion-label style="color: #b0c4de;">Costo</ion-label>
+              <span style="color: white; font-weight: bold;">{{ viaje?.costo }}</span>
+            </ion-item>
+          </ion-card-content>
+
+          <!-- Botones -->
+          <ion-footer style="padding: 10px 15px; background: transparent; display: flex; flex-direction: column;">
+            <ion-button expand="block" style="background: #2C5364; color: white; border-radius: 10px; font-weight: bold; margin-bottom: 10px;" (click)="verViaje(viaje.id)">
+              Confirmar Viaje
+            </ion-button>
+            <ion-button expand="block" style="background: #364F6B; color: white; border-radius: 10px; font-weight: bold;" (click)="irAlChat(viaje.id)">
+              Ir al chat
+            </ion-button>
+          </ion-footer>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<style>
+  ion-segment-button {
+    font-size: 1.1em;
+    color: #b0c4de;
+    padding: 10px;
+  }
+  ion-segment-button[aria-checked="true"] {
+    background: #2C5364;
+    color: white;
+    border-radius: 10px;
+  }
+  ion-card {
+    transition: transform 0.3s ease;
+  }
+  ion-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+  }
+  ion-card-title {
+    font-size: 1.6em;
+    font-weight: bold;
+  }
+  ion-card-content {
+    font-size: 1em;
+  }
+</style>

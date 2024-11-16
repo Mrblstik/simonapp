@@ -1,0 +1,47 @@
+<ion-content class="ion-padding fondo-inicio-sesion" style="background: linear-gradient(to bottom, #3A6073, #16222A); color: white;" mode="md">
+  <div class="contenedor-inicio-sesion" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+    <ion-card class="tarjeta-inicio-sesion" style="width: 90%; max-width: 400px; box-shadow: 0px 4px 15px rgba(0,0,0,0.4); border-radius: 15px;">
+      <ion-card-header style="text-align: center; background: #2C5364; color: white; border-radius: 15px 15px 0 0;">
+        <ion-card-title style="font-size: 1.5em; font-weight: bold;">Bienvenido de nuevo</ion-card-title>
+        <p style="margin-top: 4px; font-size: 0.9em; color: #b0c4de;">Inicia sesión para continuar</p>
+      </ion-card-header>
+
+      <ion-card-content style="padding: 20px;">
+        <form (ngSubmit)="iniciarSesion()" [formGroup]="form">
+          <ion-item lines="none" style="background: #f0f0f0; border-radius: 8px; margin-bottom: 12px;">
+            <ion-label position="stacked" style="color: #333;">Correo electrónico</ion-label>
+            <ion-input formControlName="email" type="email" placeholder="ejemplo@duocuc.cl" style="color: #333;"></ion-input>
+          </ion-item>
+          <div class="validator" *ngIf="form.controls.email.errors && form.controls.email.touched">
+            <ion-text color="danger">
+              <p *ngIf="form.controls.email.errors?.['required']">El correo es requerido</p>
+              <p *ngIf="form.controls.email.errors?.['email']">Ingrese un correo válido</p>
+            </ion-text>
+          </div>
+
+          <ion-item lines="none" style="background: #f0f0f0; border-radius: 8px; margin-bottom: 12px;">
+            <ion-label position="stacked" style="color: #333;">Contraseña</ion-label>
+            <ion-input formControlName="password" type="password" style="color: #333;"></ion-input>
+          </ion-item>
+          <div class="validator" *ngIf="form.controls.password.errors && form.controls.password.touched">
+            <ion-text color="danger">
+              <p *ngIf="form.controls.password.errors?.['required']">La contraseña es requerida</p>
+            </ion-text>
+          </div>
+
+          <ion-button expand="block" type="submit" color="light" [disabled]="form.invalid" style="background: #3A6073; color: white; font-weight: bold; margin-top: 10px;">
+            Iniciar sesión
+          </ion-button>
+
+          <ion-button routerLink="/registro" expand="block" color="light" style="background: #3A6073; color: white; font-weight: bold; margin-top: 10px;">
+            Registrarse
+          </ion-button>
+
+          <ion-text class="ion-padding" color="light" routerLink="/restablecer-contrasena">
+            <p class="ion-text-center" style="color: #b0c4de; margin-top: 10px;">¿Olvidaste tu contraseña?</p>
+          </ion-text>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

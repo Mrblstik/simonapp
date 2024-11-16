@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary" style="background: linear-gradient(to right, #3A6073, #16222A);">
+    <ion-title style="text-align: center; font-weight: bold; color: white;">Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background: linear-gradient(to bottom, #3A6073, #16222A); color: white;">
+  <ion-card style="background: transparent; box-shadow: none;">
+    <ion-card-header style="text-align: center;">
+      <ion-card-title style="font-size: 1.8em; font-weight: bold; color: #b0c4de;">
+        Bienvenido a la mejor app de todos los tiempo
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="text-align: center; font-size: 1em; color: #d3d3d3;">
+      "Conecta con otros estudiantes para compartir tus trayectos. Ofrece tu auto o encuentra un lugar disponible, ¡la opción ideal está a tu alcance!" 
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Opciones para ver viajes disponibles y programar viajes como botones estilizados -->
+  <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px; padding: 20px;">
+    <!-- Botón para ver viajes disponibles -->
+    <ion-button expand="block" size="large" routerLink="/lista-viajes"
+      style="width: 80%; background: #4CAF50; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); font-weight: bold; font-size: 1.1em;">
+      Viajes Disponibles
+    </ion-button>
+
+    <!-- Botón para programar un viaje -->
+    <ion-button expand="block" size="large" routerLink="/programar-viaje"
+      style="width: 80%; background: #2196F3; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); font-weight: bold; font-size: 1.1em;">
+      Programar Viaje
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-content class="ion-padding fondo-programar" mode="ios" style="background: linear-gradient(to bottom, #3A6073, #16222A); color: white;">
+  <div class="contenedor-programar" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+    <!-- Tarjeta estilizada para el formulario de programación de viaje -->
+    <ion-card class="tarjeta-programar" style="width: 90%; max-width: 400px; box-shadow: 0px 4px 20px rgba(0,0,0,0.5); border-radius: 15px;">
+      <ion-card-header style="text-align: center; background: #2C5364; color: white; border-radius: 15px 15px 0 0; padding: 20px;">
+        <ion-card-title style="font-size: 1.6em; font-weight: bold;">Programar viaje</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content style="padding: 25px;">
+        <form (ngSubmit)="confirmarViaje()" [formGroup]="formularioViaje">
+
+          <!-- Asientos disponibles -->
+          <ion-item lines="none" style="background: #3A6073; border-radius: 8px; margin-bottom: 15px; color: white;">
+            <ion-label for="asientos" position="stacked" style="color: #b0c4de;">N° de asientos</ion-label>
+            <ion-input id="asientos" formControlName="asientos" type="number" placeholder="Ej: 4" style="color: white;"></ion-input>
+          </ion-item>
+
+          <!-- Costo por pasajero -->
+          <ion-item lines="none" style="background: #3A6073; border-radius: 8px; margin-bottom: 15px; color: white;">
+            <ion-label for="costo" position="stacked" style="color: #b0c4de;">Costo por persona</ion-label>
+            <ion-input id="costo" formControlName="costo" type="number" placeholder="" style="color: white;"></ion-input>
+          </ion-item>
+
+          <!-- Hora de salida -->
+          <ion-item lines="none" style="background: #3A6073; border-radius: 8px; margin-bottom: 15px; color: white;">
+            <ion-label for="horaSalida" position="stacked" style="color: #b0c4de;">Hora de salida</ion-label>
+            <ion-datetime id="horaSalida" formControlName="horaSalida" presentation="time" style="color: white;"></ion-datetime>
+          </ion-item>
+
+          <!-- Geocodificador o mapa para seleccionar ubicación (ubicado al final) -->
+          <ion-item lines="none" style="background: #364F6B; border-radius: 8px; margin-top: 15px;">
+            <ion-label for="destino" position="stacked" style="color: #b0c4de;">Busca tu localización</ion-label>
+            <div id="geocoder" class="geocoder-container" style="width: 100%;"></div>
+          </ion-item>
+
+          <!-- Botón para confirmar viaje -->
+          <ion-button class="ion-padding" expand="block" type="submit" style="background: #2C5364; color: white; font-weight: bold; border-radius: 10px; margin-top: 20px;">
+            Confirmar y publicar viaje
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

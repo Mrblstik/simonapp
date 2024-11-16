@@ -1,0 +1,60 @@
+<ion-content class="ion-padding fondo-registro" style="background: linear-gradient(to bottom, #3A6073, #16222A); color: white;" mode="md">
+  <div class="contenedor-registro" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+    <ion-card class="tarjeta-registro" style="width: 90%; max-width: 400px; box-shadow: 0px 4px 15px rgba(0,0,0,0.4); border-radius: 15px;">
+      <ion-card-header style="text-align: center; background: #2C5364; color: white; border-radius: 15px 15px 0 0;">
+        <ion-card-title style="font-size: 1.5em; font-weight: bold;">Crear una cuenta</ion-card-title>
+        <p style="margin-top: 4px; font-size: 0.9em; color: #b0c4de;">Regístrate para continuar</p>
+      </ion-card-header>
+
+      <ion-card-content style="padding: 20px;">
+        <form (ngSubmit)="registro()" [formGroup]="form" (keypress.enter)="registro()">
+          <ion-item lines="none" style="background: #ffffff; border-radius: 8px; margin-bottom: 12px;">
+            <ion-label position="stacked" style="color: #333;">Correo electrónico</ion-label>
+            <ion-input type="email" formControlName="email" placeholder="ejemplo@duocuc.cl" style="color: #333;"></ion-input>
+          </ion-item>
+          <div class="validator" *ngIf="form.controls.email.errors && form.controls.email.touched">
+            <ion-text color="danger">
+              <div *ngIf="form.controls.email.errors?.['required']" class="ion-text-center">El correo es requerido</div>
+              <div *ngIf="form.controls.email.errors?.['email']" class="ion-text-center">Ingrese un correo válido</div>
+              <div *ngIf="form.get('email')?.errors?.['invalidDomain']" class="ion-text-center">El correo debe terminar en &#64;duocuc.cl.</div>
+            </ion-text>
+          </div>
+
+          <ion-item lines="none" style="background: #ffffff; border-radius: 8px; margin-bottom: 12px;">
+            <ion-label position="stacked" style="color: #333;">Contraseña</ion-label>
+            <ion-input type="password" formControlName="password" style="color: #333;"></ion-input>
+          </ion-item>
+          <div class="validator" *ngIf="form.controls.password.errors && form.controls.password.touched">
+            <ion-text color="danger">
+              <div *ngIf="form.controls.password.errors?.['required']" class="ion-text-center">La contraseña es requerida</div>
+            </ion-text>
+          </div>
+
+          <ion-item lines="none" style="background: #ffffff; border-radius: 8px; margin-bottom: 12px;">
+            <ion-label position="stacked" style="color: #333;">Nombre</ion-label>
+            <ion-input type="text" placeholder="" formControlName="name" style="color: #333;"></ion-input>
+          </ion-item>
+          <div class="validator" *ngIf="form.controls.name.errors && form.controls.name.touched">
+            <ion-text color="danger">
+              <div *ngIf="form.controls.name.errors?.['required']" class="ion-text-center">El nombre es requerido</div>
+            </ion-text>
+          </div>
+
+          <ion-item lines="none" style="background: #ffffff; border-radius: 8px; margin-bottom: 12px;">
+            <ion-label position="stacked" style="color: #333;">Apellido</ion-label>
+            <ion-input type="text" placeholder="" formControlName="lastname" style="color: #333;"></ion-input>
+          </ion-item>
+          <div class="validator" *ngIf="form.controls.lastname.errors && form.controls.lastname.touched">
+            <ion-text color="danger">
+              <div *ngIf="form.controls.lastname.errors?.['required']" class="ion-text-center">El apellido es requerido</div>
+            </ion-text>
+          </div>
+
+          <ion-button expand="block" class="submit" type="submit" [disabled]="form.invalid" style="background: #3A6073; color: white; font-weight: bold; margin-top: 10px;">
+            Registrarse
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
